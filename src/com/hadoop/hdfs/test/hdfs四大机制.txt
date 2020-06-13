@@ -1,0 +1,126 @@
+hdfs的四大机制，2大核心
+hdfs提供的是工容错性的分布式的数据存储方案
+
+    hadoop集群启动的时候，各个进程启动的顺序：
+    namenode
+    datanode
+    secondarynamenode
+
+
+    4大机制：
+        心跳机制
+            集群节点之间的必须做时间同步
+            namenode是集群的老大，负责集群山任务的分工，如果要进行分工，则必须知道各个几点的存活状况
+            namenode通过datanodede的定期心跳报告得知
+            datanode会每隔3s向namenode发送一次心跳报告，目的就是告诉namenode自己的存活状况
+            <property>
+              <name>dfs.heartbeat.interval</name>
+              <value>3</value> 间隔时间
+              <description>Determines datanode heartbeat interval in seconds.</description>
+            </property>
+
+            namenode什么时候判定datanode死了
+            datanode每隔3s向namenode发送一次心跳报告，当namenode连续10次没有收到datanode的心跳报告则认为这个
+            datanode可能死了，并没有判定死了，这个时候namenode会主动向datanode发送一次检查，发送一次检查的时间
+            是5min,如果namenode一次检查没有返回信息，这时候namenode会在进行一次检查，如果再次获取不到datanode的返回信息
+            这个时候才会判定这个datanode死了
+            <property>
+              <name>dfs.namenode.heartbeat.recheck-interval</name>
+              <value>300000</value>
+              <description>
+                This time decides the interval to check for expired datanodes.
+                With this value and dfs.heartbeat.interval, the interval of
+                deciding the datanode is stale or not is also calculated.
+                The unit of this configuration is millisecond.
+              </description>
+            </property>
+
+
+        安全模式
+            集群启动的时候namenode需要做哪些事情
+                元数据： 1、抽象目录树
+                        2、数据和块的映射关系 xx文件 Blok01   Blok02....
+                        3、数据块存储的位置信息
+                元数据存储的位置：
+                    内存: 读写快，元数据在内存存储 又在磁盘存储
+                    磁盘:  元数据如果存储在磁盘，那么每次进行文件读写的时候，操作的时候，都会进行磁盘读写
+                          必然会造成读写性能比较低，很显然集群在正常启动之后，文件的读写的元数据应该不在
+                          磁盘1、 2、
+                当集群第一次启动的时候，首先会将磁盘元数据加载到内存中，如果磁盘的元数据过大会造成加载到内存的时间过长
+                所以磁盘中的数据只存储了1、2，namenode的内存元数据的3是什么时候获取的？是通过namenode 的心跳报告获取的
+                集群在启动的时候namenode会接收datanode的心跳报告，这个心跳报告中还包含数据块的位置存储信息
+                这时候namenode就可以获取datanode的数据块的存储状况
+
+                集群启动的时候后：
+                    1、namenode启动：namenode将元数据加载内存中
+                    2、datanode启动：namenode接收datanode的心跳报告（获取datanode的存活状况，获取块的存储信息）99%的机器报心跳告接收到
+                    3、启动secondarynode
+
+                集群在执行这个过程的时候不允许外界对集群进行操作的，这个时候集群处于安全模式
+                也就是说集群处于安全模式的时候在加载元数据和获取datanode的心跳
+                如果集群处于维护或升级时候也可以手动将集权设置安全模式状态
+                    hdfs dfsadmin  -safemode enter 进入安全模式
+                                             leave 离开
+                                             get 获取安全模式状态 安全模式是否开启 如果开启on 关闭off
+                                             wait 等待自行退出安全模式
+
+                安全模式用户可以执行的操作：只要不修改元数据操作
+                    ls 查询
+                    cat 查看文件内容
+                    get 下载
+                            不可以执行的操作：修改元数据的操作，修改文件名，文件追加
+                    mkdir 创建目录
+                    put 上传
+
+
+        机架策略：副本存放机制 默认情况下每个数据块存储3块副本
+
+                副本的存放策略：
+                    1、第一个副本一般存储在客户端的所在的节点上
+                    2、第二个副本存储在和第一个副本不同的机架上的任意一个节点上
+                        原因：防止同一个机架断电，数据访问不到
+                    3、第三个副本存储在和第一个相同的机架上的不同节点上
+                        原因：在风险度相同的情况下，优先选择网络传输少
+                真实生产需要手动配置机架配置策略
+                真实生产中我们可以自定义机架策略：
+                    不同的节点
+                    不同的机架
+                    不同数据中心
+
+        负载均衡
+            每个节点的上存储的数据百分比相差不大
+                5t  2.5t   50%
+                2t  1t     50%
+            在文件上传的时候会优先选择客户端的节点，如果习惯性的使用同一个客户端会造成客户端所在的节点
+            存储的数据比较多
+
+            集群会有一个自动的负载的均衡操作，只不过这个负载均衡的操作比较慢
+            <property>
+              <name>dfs.datanode.balance.bandwidthPerSec</name>
+              <value>10m</value>
+              <description>
+                    Specifies the maximum amount of bandwidth that each datanode
+                    can utilize for the balancing purpose in term of
+                    the number of bytes per second. You can use the following
+                    suffix (case insensitive):
+                    k(kilo), m(mega), g(giga), t(tera), p(peta), e(exa)to specify the size
+                    (such as 128k, 512m, 1g, etc.).
+                    Or provide complete size in bytes (such as 134217728 for 128 MB).
+              </description>
+            </property>
+            上面这个参数就是限制负载均衡的带宽的，默认是10m/s 在集群空闲的情况下
+            集群自动的负载均衡对于小规模（集群节点比较少的时候）是可以的
+            集群规模特别大的时候，会花费的时间过长，等不及，这个时候需要手动负载均衡
+            start-balancer.cmd/ start-balancer.sh但是这个命令也不会立即执行 等待hadoop集群空闲时候
+
+            不存在绝对的均衡
+            所以我们在做手动负载均衡时候可以指定一个参数：
+                start-balance.sh -t 10%  指的是任意俩个节点的存储百分比不超过10%则认为已经达到负载均衡
+
+            负载均衡什么时候发生的概率比较：集群中添加新的节点
+
+
+    作为一个文件系统俩大核心功能：
+        上传：
+        下载：
+        元数据的管理
