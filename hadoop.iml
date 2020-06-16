@@ -9,5 +9,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="hadoop-common-2.10.0" level="application" />
     <orderEntry type="library" exported="" name="hadoop-hdfs-2.10.0" level="application" />
+    <orderEntry type="library" exported="" name="hadoop-mapreduce-2.10.0" level="application" />
+    <orderEntry type="library" exported="" name="hadoop-yarn-2.10.0" level="application" />
   </component>
 </module>

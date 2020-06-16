@@ -1,0 +1,4 @@
+hi	hello	name	tom
+rose	ha	hello	world	word
+jerry	supermarket
+I	am	Great

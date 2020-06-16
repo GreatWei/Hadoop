@@ -11,8 +11,8 @@ import java.net.URI;
 
 public class HDFSTEST {
     public static void main(String[] args) throws Exception {
-        //   HDFSAPI();
-        IOHDFS();
+        HDFSAPI();
+        //  IOHDFS();
 
     }
 
@@ -30,7 +30,7 @@ public class HDFSTEST {
 
         //删除文件夹,默认情况下是递归删除的
         //  fs.delete(new Path("/HDFSAPI/test"));
-        //fs.delete(new Path("/HDFSAPI/test"),false);//false :非递归，true递归
+        // fs.delete(new Path("/HDFSAPI/test"),false);//false :非递归，true递归
         //文件是否存在
         System.out.println(fs.exists(new Path("/HDFSAPI1")));
 
@@ -41,6 +41,7 @@ public class HDFSTEST {
         while (listFiles.hasNext()) {
             LocatedFileStatus next = listFiles.next();
             System.out.println(next);
+
             //返回文件的块信息 结果封装在数组中 数组的长度代表块的个数 每一个块代表数组中的一个元素
             BlockLocation[] blockLocations = next.getBlockLocations();
             for (BlockLocation blockLocation : blockLocations) {
@@ -75,8 +76,71 @@ public class HDFSTEST {
         FSDataInputStream fsDataInputStream = fs.open(new Path("/IOs/jianli.pdf"));
         FileOutputStream fileOutputStream = new FileOutputStream(new File("C:\\Users\\zhang\\Desktop\\高级java.pdf"));
 
-        IOUtils.copyBytes(fsDataInputStream,fileOutputStream,4096);
+        IOUtils.copyBytes(fsDataInputStream, fileOutputStream, 4096);
         fs.close();
 
+    }
+
+    //删除空文件和空目录
+    public static void deletfiles(FileSystem fs, Path path) throws Exception {
+//        Configuration configuration = new Configuration();
+//        FileSystem fs = FileSystem.get(new URI("hdfs://localhost:9000"), configuration, "zhang");//分布式文件系统
+//
+//        Path path = new Path("/");
+        FileStatus[] listStatus = fs.listStatus(path);
+        if (listStatus.length <= 0) {
+            fs.delete(path, false);
+        } else {
+            for (FileStatus fileStatus : listStatus) {
+                //为文件
+                if (fileStatus.isFile()) {
+                    if (fileStatus.getLen() <= 0)
+                        fs.delete(fileStatus.getPath(), false);
+                } else {//为文件夹
+
+                    deletfiles(fs, fileStatus.getPath());
+
+
+                }
+            }
+        }
+
+        listStatus = fs.listStatus(path);
+        if (listStatus.length <= 0) {
+            fs.delete(path, false);
+        }
+
+    }
+
+    //删除某一种类型的文件
+    public static void deletType(FileSystem fs, Path path) throws Exception {
+
+        FileStatus fileStatus= fs.getFileStatus(path);
+        if(fileStatus.isFile()){
+            deleteTypeFile(fs,path);
+        }else {
+            deleteDirFile(fs,path);
+        }
+
+    }
+
+    public static void deleteTypeFile(FileSystem fs, Path path) throws Exception {
+        FileStatus fileStatuses=fs.getFileStatus(path);
+        String name=fileStatuses.getPath().getName();
+        if(name.endsWith("jpg")){
+            fs.delete(path,false);
+        }
+    }
+
+    public static void deleteDirFile(FileSystem fs, Path path) throws Exception {
+        FileStatus[] fileStatuses=fs.listStatus(path);
+        for(FileStatus fileStatus:fileStatuses){
+            Path path1=fileStatus.getPath();
+            if(fileStatus.isFile()){
+                deleteTypeFile(fs,path1);
+            }else {
+                deleteDirFile(fs,path1);
+            }
+        }
     }
 }
