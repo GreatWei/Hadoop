@@ -1,0 +1,128 @@
+mapreduce 程序中的编程套路：
+    mapreduce程序中分为2大阶段：map阶段（wordcountMapper）--maptask
+								reduce阶段（wordcountReducer）--reducetask
+								
+								
+								
+	map阶段：主要进行取出数据，进行切分。打标签发给reduce
+	|
+	|分组
+	|
+	reduce阶段：对map的输出结果进行合并
+	
+	在提交代码的时候
+		进程：MRAppmaster:整个运行程序的管理者  管理整个程序的运行进度
+			yarnchlid：masttask和reducetask运行进程  1个yarnchild---1个maptask任务或reducetask任务
+		
+		
+		maptask任务并行度： 并行度就是分布式运行了多少个
+		maptask任务：就是分而治之中的分了多少个小任务  类似与map函数中的调用次数
+		任务划分说白就是对原始处理数据进行任务切分，让不同的数据跑不同的计算节点上
+			最终程序运行了多少个maptask任务和文件块有关系
+			FileInputFormat中的getSplits() 方法，这个方法就是决定每个maptask的任务划分的
+			split：切片 逻辑切片  只是进行一个逻辑划分并没有真的的进行数据切分  
+			1split---maptask---1yarnchild
+			128M 1块
+			long splitSize = this.computeSplitSize(blockSize, minSize, maxSize);
+			
+			 public static long getMinSplitSize(JobContext job) {
+        return job.getConfiguration().getLong("mapreduce.input.fileinputformat.split.minsize", 1L);
+    }
+
+    public static void setMaxInputSplitSize(Job job, long size) {
+        job.getConfiguration().setLong("mapreduce.input.fileinputformat.split.maxsize", size);
+    }
+			可以自定义切片大小：
+				切片<blockSize 改maxsize
+				切片>blockSize 改minsize
+				
+			通过上面方法读取默认块的大小
+			切片和块的关系？
+			没有实际关系  一个时数据计算逻辑的划分  一个时数据存储的物理划分
+			默认情况下切片大小和块的大小一致
+			
+			改并行度：改切片大小
+			（1）改配置文件	mapreduce.input.fileinputformat.split.maxsize
+							mapreduce.input.fileinputformat.split.minsize 添加到mapred.site.xml
+			（2）代码配置
+			 FileInputFormat.setMaxInputSplitSize(job,330);
+			  FileInputFormat.setMinInputSplitSize(job,330);
+			
+			合并小文件
+			   //合并小文件,在进行文件maptask划分
+        job.setInputFormatClass(CombineTextInputFormat.class);
+      //  CombineTextInputFormat.setMaxInputSplitSize(job,10*1024*1024);//10m
+	        //小文件合并的写法
+      //  CombineTextInputFormat.addInputPath(job,new Path(args[0]));
+	 
+	 
+	reducetask任务：reduce端进行任务分配的时候每一个任务
+	  数据量特别大的时候如果计算只有一个reduce任务，只在一个节点跑 其它节点没事干  性能不高 并且执行任务的节点压力过大
+	
+	reduce端的任务进行划分 怎么划分
+		通过我们分析最终的reducetask的并行度和分区个数有关系
+		reducetask的并行度在显示上就是最终输出结果的个数  输出结果的1个就是启动一个reducetask
+		 job.setNumReduceTasks(2);//reducetask个数，最终输出的结果数就是2个
+		 生成的2个文件各自统计的不同key的结果  最终2个文件合并在一起就是我们最终的统计结果
+		 内部是mapreduce的默认分区方式决定的不同的map的输出的key到不同的reducetask中
+			Partitioner--HashPartitioner(默认实现)
+			public int getPartition(K key, V value, int numReduceTasks) {
+				return (key.hashCode() & 2147483647) % numReduceTasks;
+			}			
+	
+	
+		reducetask并行度----job.setNumReduceTasks(2)---设置了几个就有几个reducetask---最终输出就有几个
+		默认不满足，则可以自定义
+		
+		最终决定reducetask的个数就一个
+		job.setNumReduceTasks(2)
+		分区的作用仅仅是规划每个reducetask应该计算的数据范围
+			默认的情况下：(key.hashCode() & 2147483647) % numReduceTasks;
+			自定义的：按照自定义的规则规划化每个reducetask应该处理的数据
+			
+			
+		自定义分区的时候：
+			假设分区的个数是3个：job.setNumReduceTasks(1)，最终输出一个总的文件结果
+			假设分区的个数是3个：job.setNumReduceTasks(3)，最终输出3个结果 一个分区对应一个输出结果
+			假设分区的个数是3个：job.setNumReduceTasks(2)，非法分区的错误，没法进行分任务
+			假设分区的个数是4个：job.setNumReduceTasks(3)，多出的分区数据输出0.
+			
+		自定义分区的返回值代表的含义：是和reducetask的id的对应
+									正常情况下reducetask从0开始编号
+									如果分区中返回的代表对应reducetask0 最终的结果文件对应的part-r-0000
+									如果分区中返回的代表对应reducetask2 最终的结果文件对应的part-r-0002
+									
+		
+		reducetask的并行度最终会影响到程序总体执行效率，reducetask在艰辛任务分配的时候一定要特别小小心
+		
+		自定义类的作为传输的key 或 value 那么自定义类必须实现序列化和反序列化
+			实现Writable接口
+		
+		
+		combiner组件
+			reduce端的并行度不高
+			map的并行度和切片相关 跟数据有关 数据越大maptask的并行度越高
+			所有的计算任务全部在reduce上
+			如果map可以和reduce分担一部分压力  reduce性能肯定会提高
+			Combiner组件的作用：
+				减少reduce端的数据量 在map端做了一个次合并 减少shuffle过程的数据量 提高分布式程序的性能
+				combiner组件帮reduc分担压力 combiner中的业务逻辑和reduce中业务逻辑一样
+				
+			
+			自定义Combiner组件  默认情况下没有Combiner组件的
+				（1）继承reduce类
+				（2）重写reduce方法
+				combiner本质上相当于在map端进行了一次reduce操作
+				
+				
+		
+			
+				
+				
+				
+			
+			
+	  
+	  
+	  
+			

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="hadooptest:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="29ba850e-9324-4876-a691-430fde113f82" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hadoop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hadoop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/hadoop/com/hadoop/hdfs/test/HDFSTEST.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hadoop/com/hadoop/hdfs/test/HDFSTEST.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/hadoop/com/hadoop/hdfs/test/MainHDFS.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hadoop/com/hadoop/hdfs/test/MainHDFS.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hadoop/hdfs/test/HDFSTEST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hadoop/hdfs/test/HDFSTEST.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/hadoop/hdfs/test/MainHDFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hadoop/hdfs/test/MainHDFS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hadoop/hdfs/test/hdfs四大机制.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hadoop/hdfs/test/hdfs四大机制.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,88 +21,108 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hadoop/mapreduce/test/WordCount.java">
+        <entry file="file://$PROJECT_DIR$/src/com/hadoop/mapreduce/test/Dirver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="22" column="46" lean-forward="true" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
+            <state relative-caret-position="570">
+              <caret line="40" column="53" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#472#497#0" expanded="true" />
-                <element signature="e#622#638#0" expanded="true" />
-                <element signature="e#822#838#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/hadoop/mapreduce/test/MyCombiner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.10.0.jar!/META-INF/maven/org.apache.hadoop/hadoop-mapreduce-examples/pom.xml">
+        <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/common/hadoop-common-2.10.0.jar!/org/apache/hadoop/io/IntWritable.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="130" column="52" lean-forward="true" selection-start-line="130" selection-start-column="52" selection-end-line="130" selection-end-column="52" />
+            <state relative-caret-position="152">
+              <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.10.0.jar!/org/apache/hadoop/examples/ExampleDriver.class">
+        <entry file="file://$PROJECT_DIR$/src/com/hadoop/mapreduce/test/FlowBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="34" column="42" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+            <state relative-caret-position="684">
+              <caret line="42" column="41" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#528#529#0" expanded="true" />
+                <element signature="e#551#552#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.10.0.jar!/org/apache/hadoop/examples/QuasiMonteCarlo.class">
+        <entry file="file://$PROJECT_DIR$/src/com/hadoop/hdfs/test/MainHDFS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2337">
-              <caret line="167" column="33" selection-start-line="167" selection-start-column="24" selection-end-line="167" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.10.0.jar!/org/apache/hadoop/examples/WordCount.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
-              <caret line="35" column="52" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="52" />
+            <state relative-caret-position="817">
+              <caret line="48" column="67" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="67" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.10.0.jar!/org/apache/hadoop/mapreduce/Job.class">
+        <entry file="file://$PROJECT_DIR$/src/com/hadoop/mapreduce/test/WordCountReducer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="101" column="30" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="30" />
+            <state relative-caret-position="452">
+              <caret line="28" column="84" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="84" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.10.0.jar!/org/apache/hadoop/mapred/JobConf.class">
+        <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-2.10.0-tests.jar!/org/apache/hadoop/mapred/TestOldCombinerGrouping.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="125" column="11" selection-start-line="125" selection-start-column="11" selection-end-line="125" selection-end-column="11" />
+            <state relative-caret-position="2204">
+              <caret line="134" selection-start-line="134" selection-end-line="134" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/common/hadoop-common-2.10.0.jar!/org/apache/hadoop/util/ProgramDriver.class">
+        <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.10.0.jar!/org/apache/hadoop/mapred/Partitioner.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="21" column="11" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+            <state relative-caret-position="152">
+              <caret line="12" column="28" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://E:/TOOL/jdk-11.0.4/lib/src.zip!/java.base/java/lang/Thread.java">
+        <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.10.0.jar!/org/apache/hadoop/mapreduce/Partitioner.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="831" column="23" selection-start-line="831" selection-start-column="23" selection-end-line="831" selection-end-column="23" />
+            <state relative-caret-position="190">
+              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.10.0.jar!/org/apache/hadoop/mapreduce/lib/partition/HashPartitioner.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="19" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -125,6 +146,8 @@
       <find>checkpoint.per</find>
       <find>run</find>
       <find>main</find>
+      <find>splits</find>
+      <find>Partitioner</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -136,15 +159,24 @@
         <option value="$PROJECT_DIR$/src/com/hadoop/hdfs/test/hdfs-default.xml" />
         <option value="$PROJECT_DIR$/src/com/hadoop/hdfs/test/hdfs四大机制.txt" />
         <option value="$PROJECT_DIR$/src/com/hadoop/hdfs/test/HDFSTEST.java" />
-        <option value="$PROJECT_DIR$/src/com/hadoop/hdfs/test/MainHDFS.java" />
         <option value="$PROJECT_DIR$/src/com/hadoop/mapreduce/test/word.txt" />
         <option value="$PROJECT_DIR$/word.txt" />
         <option value="$PROJECT_DIR$/src/com/hadoop/mapreduce/test/WordCount.java" />
+        <option value="$PROJECT_DIR$/src/com/hadoop/mapreduce/test/WordCountMapper.java" />
+        <option value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+        <option value="$PROJECT_DIR$/src/com/hadoop/mapreduce/test/mapreducer.txt" />
+        <option value="$PROJECT_DIR$/src/com/hadoop/hdfs/test/MainHDFS.java" />
+        <option value="$PROJECT_DIR$/src/com/hadoop/mapreduce/test/MyPartition.java" />
+        <option value="$PROJECT_DIR$/src/com/hadoop/mapreduce/test/Dirver.java" />
+        <option value="$PROJECT_DIR$/src/com/hadoop/mapreduce/test/FlowBean.java" />
+        <option value="$PROJECT_DIR$/src/com/hadoop/mapreduce/test/WordCountReducer.java" />
+        <option value="$PROJECT_DIR$/src/com/hadoop/mapreduce/test/MyCombiner.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="34" />
+    <option name="x" value="2" />
+    <option name="y" value="21" />
     <option name="width" value="1213" />
     <option name="height" value="1258" />
   </component>
@@ -188,48 +220,45 @@
               <item name="hadoop" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="hadoop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="hadoop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="hadoop-mapreduce-2.10.0" type="70bed36:NamedLibraryElementNode" />
-            </path>
-            <path>
-              <item name="hadoop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="hadoop-mapreduce-2.10.0" type="70bed36:NamedLibraryElementNode" />
-              <item name="hadoop-mapreduce-examples-2.10.0.jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hadoop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="hadoop-mapreduce-2.10.0" type="70bed36:NamedLibraryElementNode" />
-              <item name="hadoop-mapreduce-examples-2.10.0.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hadoop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="hadoop-mapreduce-2.10.0" type="70bed36:NamedLibraryElementNode" />
-              <item name="hadoop-mapreduce-examples-2.10.0.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="examples" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="hadoop" type="58d84e3e:PackageViewProjectNode" />
+              <item name="hadoop" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="hadoop" type="58d84e3e:PackageViewProjectNode" />
+              <item name="hadoop" type="616d4139:PackageViewModuleNode" />
+              <item name="com.hadoop" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="hadoop" type="58d84e3e:PackageViewProjectNode" />
+              <item name="hadoop" type="616d4139:PackageViewModuleNode" />
+              <item name="com.hadoop" type="1f31426a:PackageElementNode" />
+              <item name="mapreduce.test" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="hadoop" type="58d84e3e:PackageViewProjectNode" />
+              <item name="hadoop" type="616d4139:PackageViewModuleNode" />
+              <item name="META-INF" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1592328229289" />
-    <property name="last_opened_file_path" value="E:/TOOL/hadoop-2.10.0/share/hadoop/yarn/lib/zookeeper-3.4.9.jar!/" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1592557993862" />
+    <property name="last_opened_file_path" value="E:/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Global Libraries" />
@@ -239,6 +268,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\CODE\hadoop\src\com\hadoop\mapreduce\test" />
       <recent name="E:\CODE\hadoop\src\com\hadoop\hdfs\test" />
       <recent name="E:\CODE\hadoop\src" />
     </key>
@@ -255,7 +285,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.WordCount">
+  <component name="RunManager" selected="Application.MainHDFS">
+    <configuration name="Dirver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.hadoop.mapreduce.test.Dirver" />
+      <module name="hadoop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hadoop.mapreduce.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HDFSTEST" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.hadoop.hdfs.test.HDFSTEST" />
       <module name="hadoop" />
@@ -295,10 +338,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Dirver" />
+      <item itemvalue="Application.HDFSTEST" />
+      <item itemvalue="Application.MainHDFS" />
+      <item itemvalue="Application.WordCount" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.WordCount" />
         <item itemvalue="Application.MainHDFS" />
+        <item itemvalue="Application.Dirver" />
+        <item itemvalue="Application.WordCount" />
         <item itemvalue="Application.HDFSTEST" />
       </list>
     </recent_temporary>
@@ -319,17 +369,21 @@
       <workItem from="1592104213674" duration="4597000" />
       <workItem from="1592199893324" duration="5922000" />
       <workItem from="1592284884757" duration="13526000" />
+      <workItem from="1592400007804" duration="9925000" />
+      <workItem from="1592447151794" duration="8266000" />
+      <workItem from="1592549270704" duration="4405000" />
+      <workItem from="1592636146723" duration="671000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38914000" />
+    <option name="totallyTimeSpent" value="62181000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="34" width="1213" height="1258" extended-state="0" />
+    <frame x="2" y="21" width="1213" height="1258" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27406764" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31483087" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -339,7 +393,7 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3291815" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.16014235" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28647688" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -390,15 +444,22 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/common/hadoop-common-2.10.0.jar!/org/apache/hadoop/conf/Configuration.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3458">
-          <caret line="270" column="20" selection-start-line="270" selection-start-column="12" selection-end-line="270" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hadoop/hdfs/test/hdfs-default.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
@@ -441,17 +502,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/common/hadoop-common-2.10.0.jar!/org/apache/hadoop/fs/FileStatus.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11">
-          <caret line="128" column="22" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
-          <folding>
-            <element signature="e#4024#4025#0" expanded="true" />
-            <element signature="e#4056#4057#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/common/hadoop-common-2.10.0.jar!/org/apache/hadoop/fs/FsStatus.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -466,37 +516,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hadoop/hdfs/test/HDFSTEST.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="32" column="73" lean-forward="true" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hadoop/mapreduce/test/word.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hadoop/mapreduce/test/word.txt" />
     <entry file="jar://E:/TOOL/jdk-11.0.4/lib/src.zip!/java.base/java/util/Map.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
           <caret line="194" column="12" selection-start-line="194" selection-start-column="12" selection-end-line="194" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hadoop/hdfs/test/MainHDFS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -511,30 +535,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/word.txt">
+    <entry file="file://$PROJECT_DIR$/word.txt" />
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.10.0.jar!/org/apache/hadoop/mapreduce/Job.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        <state relative-caret-position="1349">
+          <caret line="101" column="30" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://E:/TOOL/jdk-11.0.4/lib/src.zip!/java.base/java/lang/Thread.java">
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.10.0.jar!/org/apache/hadoop/mapred/JobConf.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="831" column="23" selection-start-line="831" selection-start-column="23" selection-end-line="831" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hadoop/mapreduce/test/WordCount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" column="46" lean-forward="true" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#472#497#0" expanded="true" />
-            <element signature="e#622#638#0" expanded="true" />
-            <element signature="e#822#838#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1824">
+          <caret line="125" column="11" selection-start-line="125" selection-start-column="11" selection-end-line="125" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -545,45 +557,273 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.10.0.jar!/META-INF/maven/org.apache.hadoop/hadoop-mapreduce-examples/pom.xml">
+    <entry file="jar://E:/TOOL/jdk-11.0.4/lib/src.zip!/java.base/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="130" column="52" lean-forward="true" selection-start-line="130" selection-start-column="52" selection-end-line="130" selection-end-column="52" />
+        <state relative-caret-position="14687">
+          <caret line="831" column="23" selection-start-line="831" selection-start-column="23" selection-end-line="831" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.10.0.jar!/org/apache/hadoop/examples/ExampleDriver.class">
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.10.0.jar!/META-INF/maven/org.apache.hadoop/hadoop-mapreduce-examples/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="34" column="42" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+        <state relative-caret-position="414">
+          <caret line="130" column="52" selection-start-line="130" selection-start-column="52" selection-end-line="130" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hadoop/mapreduce/test/WordCount.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-484">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.10.0.jar!/org/apache/hadoop/examples/QuasiMonteCarlo.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2337">
+        <state relative-caret-position="1008">
           <caret line="167" column="33" selection-start-line="167" selection-start-column="24" selection-end-line="167" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.10.0.jar!/org/apache/hadoop/mapred/JobConf.class">
+    <entry file="jar://E:/TOOL/jdk-11.0.4/lib/src.zip!/java.base/java/lang/Long.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="125" column="11" selection-start-line="125" selection-start-column="11" selection-end-line="125" selection-end-column="11" />
+        <state relative-caret-position="366">
+          <caret line="58" column="19" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.10.0.jar!/org/apache/hadoop/mapreduce/Job.class">
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.10.0.jar!/org/apache/hadoop/mapreduce/Mapper.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="101" column="30" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="30" />
+        <state relative-caret-position="209">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/common/hadoop-common-2.10.0.jar!/org/apache/hadoop/io/Text.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.10.0.jar!/org/apache/hadoop/mapreduce/TaskInputOutputContext.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.10.0.jar!/org/apache/hadoop/examples/ExampleDriver.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="34" column="42" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/TOOL/jdk-11.0.4/lib/src.zip!/java.base/java/util/StringTokenizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="234" column="11" selection-start-line="234" selection-start-column="11" selection-end-line="234" selection-end-column="11" />
+          <folding>
+            <element signature="e#7881#7882#0" expanded="true" />
+            <element signature="e#7926#7927#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.10.0.jar!/org/apache/hadoop/examples/WordCount.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="35" column="52" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="52" />
+        <state relative-caret-position="1026">
+          <caret line="69" column="8" selection-start-line="69" selection-start-column="8" selection-end-line="70" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hadoop/mapreduce/test/mapreducer.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hadoop/mapreduce/test/WordCountMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="44" column="23" lean-forward="true" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.10.0.jar!/org/apache/hadoop/examples/WordMean.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="88" column="37" selection-start-line="88" selection-start-column="26" selection-end-line="88" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/common/hadoop-common-2.10.0.jar!/org/apache/hadoop/conf/Configuration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="712" column="16" selection-start-line="712" selection-start-column="16" selection-end-line="712" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/common/hadoop-common-2.10.0.jar!/org/apache/hadoop/fs/FileStatus.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="95" column="16" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="16" />
+          <folding>
+            <element signature="e#3413#3414#0" expanded="true" />
+            <element signature="e#3450#3451#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hadoop/mapreduce/test/MyPartition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="13" column="61" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.10.0.jar!/org/apache/hadoop/mapred/lib/HashPartitioner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="22" column="28" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.10.0.jar!/org/apache/hadoop/mapreduce/lib/input/FileInputFormat.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1026">
+          <caret line="87" column="90" selection-start-line="87" selection-start-column="90" selection-end-line="87" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hadoop/hdfs/test/HDFSTEST.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="32" column="73" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/common/hadoop-common-2.10.0.jar!/org/apache/hadoop/io/Writable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="15" column="25" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.10.0.jar!/org/apache/hadoop/mapreduce/Reducer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hadoop/mapreduce/test/Dirver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="40" column="53" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/common/hadoop-common-2.10.0.jar!/org/apache/hadoop/io/IntWritable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hadoop/mapreduce/test/FlowBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="42" column="41" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#528#529#0" expanded="true" />
+            <element signature="e#551#552#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hadoop/hdfs/test/MainHDFS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="817">
+          <caret line="48" column="67" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-2.10.0-tests.jar!/org/apache/hadoop/mapred/TestOldCombinerGrouping.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2204">
+          <caret line="134" selection-start-line="134" selection-end-line="134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.10.0.jar!/org/apache/hadoop/mapred/Partitioner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.10.0.jar!/org/apache/hadoop/mapreduce/Partitioner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/TOOL/hadoop-2.10.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.10.0.jar!/org/apache/hadoop/mapreduce/lib/partition/HashPartitioner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hadoop/mapreduce/test/WordCountReducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="28" column="84" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hadoop/mapreduce/test/MyCombiner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -593,10 +833,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>hadooptest:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.43218392" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

@@ -1,0 +1,11 @@
+mapreduce 程序中的编程套路：
+    mapreduce程序中分为2大阶段：map阶段（wordcountMapper）--maptask
+								reduce阶段（wordcountReducer）--reducetask
+								
+								
+								
+	map阶段：主要进行取出数据，进行切分。打标签发给reduce
+	|
+	|分组
+	|
+	reduce阶段：对map的输出结果进行合并

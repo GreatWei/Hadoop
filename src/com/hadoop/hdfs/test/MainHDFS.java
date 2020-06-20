@@ -10,12 +10,12 @@ import java.net.URI;
 public class MainHDFS {
 
     public static void main(String[] args) throws Exception {
-        Configuration conf= new Configuration();
-        conf.set("dfs.replication","5");
-        //  FileSystem fs=FileSystem.get(conf);  //本地文件系统
-        //   FileSystem fs=FileSystem.get(new URI("hdfs://localhost:9000"),conf);//分布式文件系统
-        FileSystem fs=FileSystem.get(new URI("hdfs://localhost:9000"),conf,"zhang");//分布式文件系统
-        fs.delete(new Path("/word"),false);//false :非递归，true递归
+//        Configuration conf= new Configuration();
+//        conf.set("dfs.replication","5");
+//        //  FileSystem fs=FileSystem.get(conf);  //本地文件系统
+//        //   FileSystem fs=FileSystem.get(new URI("hdfs://localhost:9000"),conf);//分布式文件系统
+//        FileSystem fs=FileSystem.get(new URI("hdfs://localhost:9000"),conf,"zhang");//分布式文件系统
+//        fs.delete(new Path("/word"),false);//false :非递归，true递归
     uploadHDFS();
 
     }
@@ -51,7 +51,7 @@ public class MainHDFS {
         //     Path src = new Path("C:\\Users\\zhang\\Desktop\\ftp.txt");
         //C:\Users\zhang\Desktop\Netty权威指南 PDF电子书下载 带目录书签 完整版.pdf
         Path src = new Path("E:\\TOOL\\hadoop-2.10.0\\share\\hadoop\\mapreduce\\word.txt");
-        Path dst = new Path("/word/word.txt");//代码运行的地址不是hdfs的地址
+        Path dst = new Path("/word/word1.txt");//代码运行的地址不是hdfs的地址
         /**
          *文件在上传/下载，会生成一个crc文件
          *
