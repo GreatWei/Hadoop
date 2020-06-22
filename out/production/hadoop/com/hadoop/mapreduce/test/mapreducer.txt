@@ -9,3 +9,190 @@ mapreduce 程序中的编程套路：
 	|分组
 	|
 	reduce阶段：对map的输出结果进行合并
+	
+	在提交代码的时候
+		进程：MRAppmaster:整个运行程序的管理者  管理整个程序的运行进度
+			yarnchlid：masttask和reducetask运行进程  1个yarnchild---1个maptask任务或reducetask任务
+		
+		
+		maptask任务并行度： 并行度就是分布式运行了多少个
+		maptask任务：就是分而治之中的分了多少个小任务  类似与map函数中的调用次数
+		任务划分说白就是对原始处理数据进行任务切分，让不同的数据跑不同的计算节点上
+			最终程序运行了多少个maptask任务和文件块有关系
+			FileInputFormat中的getSplits() 方法，这个方法就是决定每个maptask的任务划分的
+			split：切片 逻辑切片  只是进行一个逻辑划分并没有真的的进行数据切分  
+			1split---maptask---1yarnchild
+			128M 1块
+			long splitSize = this.computeSplitSize(blockSize, minSize, maxSize);
+			
+			 public static long getMinSplitSize(JobContext job) {
+        return job.getConfiguration().getLong("mapreduce.input.fileinputformat.split.minsize", 1L);
+    }
+
+    public static void setMaxInputSplitSize(Job job, long size) {
+        job.getConfiguration().setLong("mapreduce.input.fileinputformat.split.maxsize", size);
+    }
+			可以自定义切片大小：
+				切片<blockSize 改maxsize
+				切片>blockSize 改minsize
+				
+			通过上面方法读取默认块的大小
+			切片和块的关系？
+			没有实际关系  一个时数据计算逻辑的划分  一个时数据存储的物理划分
+			默认情况下切片大小和块的大小一致
+			
+			改并行度：改切片大小
+			（1）改配置文件	mapreduce.input.fileinputformat.split.maxsize
+							mapreduce.input.fileinputformat.split.minsize 添加到mapred.site.xml
+			（2）代码配置
+			 FileInputFormat.setMaxInputSplitSize(job,330);
+			  FileInputFormat.setMinInputSplitSize(job,330);
+			
+			合并小文件
+			   //合并小文件,在进行文件maptask划分
+        job.setInputFormatClass(CombineTextInputFormat.class);
+      //  CombineTextInputFormat.setMaxInputSplitSize(job,10*1024*1024);//10m
+	        //小文件合并的写法
+      //  CombineTextInputFormat.addInputPath(job,new Path(args[0]));
+	 
+	 
+	reducetask任务：reduce端进行任务分配的时候每一个任务
+	  数据量特别大的时候如果计算只有一个reduce任务，只在一个节点跑 其它节点没事干  性能不高 并且执行任务的节点压力过大
+	
+	reduce端的任务进行划分 怎么划分
+		通过我们分析最终的reducetask的并行度和分区个数有关系
+		reducetask的并行度在显示上就是最终输出结果的个数  输出结果的1个就是启动一个reducetask
+		 job.setNumReduceTasks(2);//reducetask个数，最终输出的结果数就是2个
+		 生成的2个文件各自统计的不同key的结果  最终2个文件合并在一起就是我们最终的统计结果
+		 内部是mapreduce的默认分区方式决定的不同的map的输出的key到不同的reducetask中
+			Partitioner--HashPartitioner(默认实现)
+			public int getPartition(K key, V value, int numReduceTasks) {
+				return (key.hashCode() & 2147483647) % numReduceTasks;
+			}			
+	
+	
+		reducetask并行度----job.setNumReduceTasks(2)---设置了几个就有几个reducetask---最终输出就有几个
+		默认不满足，则可以自定义
+		
+		最终决定reducetask的个数就一个
+		job.setNumReduceTasks(2)
+		分区的作用仅仅是规划每个reducetask应该计算的数据范围
+			默认的情况下：(key.hashCode() & 2147483647) % numReduceTasks;
+			自定义的：按照自定义的规则规划化每个reducetask应该处理的数据
+			
+			
+		自定义分区的时候：
+			假设分区的个数是3个：job.setNumReduceTasks(1)，最终输出一个总的文件结果
+			假设分区的个数是3个：job.setNumReduceTasks(3)，最终输出3个结果 一个分区对应一个输出结果
+			假设分区的个数是3个：job.setNumReduceTasks(2)，非法分区的错误，没法进行分任务
+			假设分区的个数是4个：job.setNumReduceTasks(3)，多出的分区数据输出0.
+			
+		自定义分区的返回值代表的含义：是和reducetask的id的对应
+									正常情况下reducetask从0开始编号
+									如果分区中返回的代表对应reducetask0 最终的结果文件对应的part-r-0000
+									如果分区中返回的代表对应reducetask2 最终的结果文件对应的part-r-0002
+									
+		
+		reducetask的并行度最终会影响到程序总体执行效率，reducetask在艰辛任务分配的时候一定要特别小小心
+		
+		自定义类的作为传输的key 或 value 那么自定义类必须实现序列化和反序列化
+			实现Writable接口
+		
+		
+		combiner组件
+			reduce端的并行度不高
+			map的并行度和切片相关 跟数据有关 数据越大maptask的并行度越高
+			所有的计算任务全部在reduce上
+			如果map可以和reduce分担一部分压力  reduce性能肯定会提高
+			Combiner组件的作用：
+				减少reduce端的数据量 在map端做了一个次合并 减少shuffle过程的数据量 提高分布式程序的性能
+				combiner组件帮reduc分担压力 combiner中的业务逻辑和reduce中业务逻辑一样
+				
+			
+			自定义Combiner组件  默认情况下没有Combiner组件的
+				（1）继承reduce类
+				（2）重写reduce方法
+				combiner本质上相当于在map端进行了一次reduce操作
+				job.setCombinerClass(MyCombiner.class);
+				
+				注意：
+				combiner针对的是单个maptask--切片
+				不可以对多个maptask结果进行合并
+				
+				什么情况下可以使用，什么情况下不可以使用
+					求和 可以
+					最大值 可以
+					最小 可以
+					平均值 不可以
+				
+				
+	排序：
+		maptask ---reducertask之间框架默认加了排序
+			排序的规则是按照map端输出的key的字典顺序继续排序 按照出现的次数从低到高
+			如果想要对词频进行排序  那么词频应该放在map输出的key的位置
+			
+		
+		自定义的类
+			需放在key的位置
+			implents WritableComparable
+			
+		
+	全局计数器
+		
+		程序运行中框架自带的计数器
+	File System Counters  文件系统统计计数器  文件读写计数器
+		FILE: Number of bytes read=40394
+		FILE: Number of bytes written=1991088
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=20181
+		HDFS: Number of bytes written=4193
+		HDFS: Number of read operations=35
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=10
+	Map-Reduce Framework   mapreduce框架计数器
+		Map input records=26   map端输入的数据条数
+		Map output records=872 map端输出的数据条数
+		Map output bytes=9220
+		Map output materialized bytes=10988
+		Input split bytes=201
+		Combine input records=0  combiner数据条数
+		Combine output records=0
+		Reduce input groups=294  reduce端输入的组数  到reduce端总共分了多少组
+		Reduce shuffle bytes=10988   shuffle过程的字节
+		Reduce input records=872   reduce输入的记录数==map的输出
+		Reduce output records=294  reduce输出的记录条数
+		Spilled Records=1744 溢写的记录条数
+		Shuffled Maps =4   经过shuffled的过程的map的个数
+		Failed Shuffles=0
+		Merged Map outputs=4
+		GC time elapsed (ms)=4
+		Total committed heap usage (bytes)=1073741824
+	Shuffle Errors   shuffle阶段的错误信息
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0   IO 错误
+		WRONG_LENGTH=0
+		WRONG_MAP=0   map错误
+		WRONG_REDUCE=0  reduce错误
+	File Input Format Counters 
+		Bytes Read=5766  文件输入的字节
+	File Output Format Counters 
+		Bytes Written=2855  最终输出的字节
+	
+	自定义的计数器
+		应用场景：全局便的时候会使用
+		应用全局计数器统计亿下数据的哦在那个的记录条数和总的字段数
+		Counter
+		
+			
+				
+				
+				
+			
+			
+	  
+	  
+	  
+			

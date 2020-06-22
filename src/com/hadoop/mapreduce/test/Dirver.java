@@ -37,7 +37,7 @@ public class Dirver {
         job.setReducerClass(WordCountReducer.class);
 
         //合并小文件,在进行文件maptask划分
-        job.setInputFormatClass(CombineTextInputFormat.class);
+      //  job.setInputFormatClass(CombineTextInputFormat.class);
       //  CombineTextInputFormat.setMaxInputSplitSize(job,10*1024*1024);//10m
 
         //2.设置mapper的输出类型
@@ -47,6 +47,9 @@ public class Dirver {
         //设置reducer的输出类型 代码在运行的时候泛型会被自动擦除 所以我们这里需要指定
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
+
+        //设置切片先合并
+       // job.setCombinerClass(MyCombiner.class);
 
         job.setNumReduceTasks(2);//reducetask个数
         //设置自定义分区规则
@@ -63,7 +66,7 @@ public class Dirver {
       //  CombineTextInputFormat.addInputPath(job,new Path(args[0]));
 
         //输出路劲：最终结果输出的路径,输出路劲一定不能存在  hdfs怕把原来的文件覆盖
-        FileOutputFormat.setOutputPath(job,new Path("hdfs://localhost:9000/word2/"));
+        FileOutputFormat.setOutputPath(job,new Path("hdfs://localhost:9000/word3/"));
 
 
 

@@ -2,6 +2,7 @@ package com.hadoop.mapreduce.test;
 
 
 import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
 import java.io.DataOutput;
@@ -10,7 +11,7 @@ import java.io.IOException;
 /**
  * 自定义类
  */
-public class FlowBean implements Writable {
+public class FlowBean implements Writable, WritableComparable<FlowBean> {
 
     private int downloadflow;
     private int uploadflow;
@@ -71,5 +72,13 @@ public class FlowBean implements Writable {
     @Override
     public String toString() {
         return uploadflow + "\t" + downloadflow + "\t" + sumflow;
+    }
+
+
+    //map---->reducer
+    @Override
+    public int compareTo(FlowBean o) {
+
+        return o.getSumflow()-this.getSumflow();
     }
 }
